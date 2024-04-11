@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: product-pod
+  labels:
+    app: product
+spec:
+  containers:
+    - name: product-app
+      image: rodrigofbmattos/product-app

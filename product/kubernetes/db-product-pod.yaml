@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-product-pod
+  labels:
+    app: db-product
+spec:
+  containers:
+    - name: db-product-pod
+      image: postgres
+      env:
+        - name: POSTGRES_PASSWORD
+          value: '123456'
+      ports:
+        #- name: db-product-pod
+        - containerPort: 5432

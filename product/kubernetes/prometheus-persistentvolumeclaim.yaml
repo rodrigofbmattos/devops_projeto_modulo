@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-persistentvolumeclaim
+  labels:
+    app: prometheus
+spec:
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 200Mi
+  accessModes:
+    - ReadWriteMany

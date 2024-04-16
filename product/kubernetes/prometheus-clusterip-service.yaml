@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-product-clusterip-service
+  name: prometheus-clusterip-service
 spec:
   type: ClusterIP
   selector:
-    app: db-product
+    app: prometheus
   ports:
     - protocol: TCP
-      port: 5432
-      targetPort: 5432
+      port: 9090
+      targetPort: 9090

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-pod
+  labels:
+    app: jenkins
+spec:
+  containers:
+    - name: jenkins-pod
+      image: jenkins/jenkins:lts
+      ports:
+        - name: httpport
+          containerPort: 8080
+        - name: jnlpport
+          containerPort: 50000
+      volumeMounts:
+        - name: jenkins-data-volume
+          mountPath: /var/jenkins_home
+  volumes:
+    - name: jenkins-data-volume
+      emptyDir: { }
+      #hostPath:
+        #path: /prometheus-data

@@ -35,7 +35,6 @@ scrape_configs:
   - job_name: "postgres"
     scrape_interval: 3s
     static_configs:
+      #- targets: ["postgres-exporter-pod:9187"]
       - targets: ["postgres-exporter:9187"]
       #- targets: ["localhost:9187"]
-
-#docker run --network=product --name=prometheus -p 9090:9090 -v C:\Users\Rodrigo\Desktop\Infnet\Projetos\PGLLAR01C0-35-L1\devops_projeto_modulo\product\prometheus\prometheus.yml:/etc/prometheus/prometheus.yml -d prom/prometheus

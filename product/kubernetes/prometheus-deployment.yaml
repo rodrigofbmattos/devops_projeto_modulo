@@ -1,0 +1,36 @@
+# Utilizar o Pod no lugar deste Deployment.
+# Está opção de Deployment está aqui somente como informação de outro modo de executar por mais de um Pod.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      name: prometheus-app-deployment
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus-app-deployment
+          image: prom/prometheus
+          args:
+            #- '--storage.tsdb.retention=6h'
+            - '--storage.tsdb.path=/prometheus'
+            - '--config.file=/etc/prometheus/prometheus.yml'
+          volumeMounts:
+            - name: prometheus-configmap-volume
+              mountPath: /etc/prometheus
+            - name: prometheus-data-volume
+              mountPath: /prometheus
+      volumes:
+        - name: prometheus-configmap-volume
+          configMap:
+            name: prometheus-configmap
+        - name: prometheus-data-volume
+          emptyDir: { }

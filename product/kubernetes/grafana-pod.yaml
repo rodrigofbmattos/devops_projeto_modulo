@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+  labels:
+    app: grafana
+spec:
+  containers:
+    - name: grafana-app-pod
+      image: grafana/grafana-enterprise
+      volumeMounts:
+        - name: grafana-data-volume
+          mountPath: /grafana-storage
+  volumes:
+    - name: grafana-data-volume
+      hostPath:
+        path: /var/lib/grafana

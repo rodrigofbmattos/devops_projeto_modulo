@@ -20,4 +20,4 @@ spec:
     - name: jenkins-data-volume
       emptyDir: { }
       #hostPath:
-        #path: /prometheus-data
+        #path: /your/home

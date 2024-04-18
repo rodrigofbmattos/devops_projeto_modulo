@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: product-jmeter-pod
+  labels:
+    app: product-jmeter
+spec:
+  containers:
+    - name: product-app
+      image: rodrigofbmattos/product-app-jmeter:0.1

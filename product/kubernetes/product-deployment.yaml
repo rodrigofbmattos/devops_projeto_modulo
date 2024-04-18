@@ -16,17 +16,17 @@ spec:
       containers:
         - name: product-app
           image: rodrigofbmattos/product-app:0.3
+          ports:
+            - containerPort: 8086
           livenessProbe:
             httpGet:
               port: 8086
-              path: /run/desktop/mnt/host/c/kubernetes/probe/liveness
-            initialDelaySeconds: 50
-            periodSeconds: 10
+              path: /api/product
+            initialDelaySeconds: 60
+            periodSeconds: 20
             failureThreshold: 3
           readinessProbe:
             httpGet:
               port: 8086
-              path: /run/desktop/mnt/host/c/kubernetes/probe/readiness
-            initialDelaySeconds: 50
-            periodSeconds: 10
-            failureThreshold: 3
+              path: /api/product
+            initialDelaySeconds: 60
